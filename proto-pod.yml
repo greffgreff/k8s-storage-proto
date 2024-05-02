@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: proto-pod
+  namespace: proto
+spec:
+  containers:
+    - name: pvc-pod-container
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: /data
+          name: data
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: proto-pvc
